@@ -23,12 +23,15 @@ const Auth0ProviderWithNavigate = ({children}:Props) => {
         navigate("/auth-callback")
     }
 
+//     Using `authorizationParams.redirectUri` has been deprecated, 
+// please use `authorizationParams.redirect_uri` instead as `authorizationParams.redirectUri` will be removed in a future version
+
     return (
         <Auth0Provider 
         domain= {domain} 
         clientId={clientId} 
         authorizationParams={{
-            redirectUri: redirectUri,
+            redirect_uri: redirectUri,
             audience,
         }} 
         onRedirectCallback={onRedirectCallback} 
@@ -37,5 +40,6 @@ const Auth0ProviderWithNavigate = ({children}:Props) => {
         </Auth0Provider>
     )
 }
+
 
 export default Auth0ProviderWithNavigate;
