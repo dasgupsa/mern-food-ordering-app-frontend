@@ -5,6 +5,7 @@ import AuthCallbackPage from "./pages/AuthCallbackPage";
 import UserProfilePage from "./pages/UserProfilePage";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import ManageRestaurantPage from "./pages/ManageRestaurantPage";
+import SearchPage from "./pages/SearchPage";
 
 const AppRoutes = () => {
     return (
@@ -13,6 +14,10 @@ const AppRoutes = () => {
         <Routes>
              <Route path="/" element = {<Layout showHero> <HomePage /> </Layout>} /> 
              <Route path="/auth-callback" element={<AuthCallbackPage />} />
+             {/* city is dynamic and will be obtained via useParams */}
+             <Route path="/search/:city" element={<Layout showHero={false}>
+                <SearchPage />
+             </Layout>} />
              {/* we need to protect user-profile route */}
              <Route element={<ProtectedRoute /> }>
                 <Route path="/user-profile" element = {<Layout> <UserProfilePage /> </Layout>} />
